@@ -16,6 +16,7 @@ ENV/
 *.pyc
 media/
 staticfiles/
+db.sqlite3
 
 # Environment variables
 .env
