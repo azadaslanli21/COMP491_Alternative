@@ -23,9 +23,9 @@ export class Deliverable extends Component {
 
   getWPName = id => this.state.wpMap[id] || id;
 
-  deleteTask = id => {
+  deleteDeliverable = id => {
     if (window.confirm('Are you sure?')) {
-      fetch(process.env.REACT_APP_API + 'deliverables/' + id + '/', {
+      fetch(process.env.REACT_APP_API + 'deliverables/' + id, {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',
@@ -75,13 +75,13 @@ export class Deliverable extends Component {
             </tr>
           </thead>
           <tbody>
-            {deliverables.map(d => (
-              <tr key={d.id}>
-                <td>{d.id}</td>
-                <td>{d.name}</td>
-                <td>{d.description}</td>
-                <td>{d.deadline}</td>
-                <td>{this.getWPName(d.work_package)}</td>
+            {deliverables.map(t => (
+              <tr key={t.id}>
+                <td>{t.id}</td>
+                <td>{t.name}</td>
+                <td>{t.description}</td>
+                <td>{t.deadline}</td>
+                <td>{this.getWPName(t.work_package)}</td>
                 <td>
                   <ButtonToolbar>
                     <Button
@@ -90,17 +90,17 @@ export class Deliverable extends Component {
                       onClick={() =>
                         this.setState({
                           editModalShow: true,
-                          deliverableid: d.id,
-                          name: d.name,
-                          description: d.description,
-                          deadline: d.deadline,
-                          work_package: d.work_package,
+                          deliverableid: t.id,
+                          name: t.name,
+                          description: t.description,
+                          deadline: t.deadline,
+                          work_package: t.work_package,
                         })
                       }
                     >
                       Edit
                     </Button>
-                    <Button className="mr-2" variant="danger" onClick={() => this.deleteDeliverable(d.id)}>
+                    <Button className="mr-2" variant="danger" onClick={() => this.deleteDeliverable(t.id)}>
                       Delete
                     </Button>
                   </ButtonToolbar>

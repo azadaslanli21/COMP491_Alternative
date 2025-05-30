@@ -20,7 +20,7 @@ export class EditDeliverableModal extends Component {
     const wpName = form.work_package.value;
     const wpId = this.state.workpackages.find(wp => wp.name === wpName)?.id;
 
-    fetch(process.env.REACT_APP_API + 'deliverables/' + this.props.deliverableid + '/', {
+    fetch(process.env.REACT_APP_API + 'deliverables/' + this.props.deliverableid, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
